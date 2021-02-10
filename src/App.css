@@ -1,0 +1,51 @@
+.list-card {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.movie-card {
+  margin: 10px;
+}
+#input-range {
+  width: 30rem;
+  margin: 2rem auto;
+}
+
+#genres {
+  margin: auto;
+  text-align: center;
+}
+
+.genres {
+  border-radius: 20px;
+  background: transparent;
+  margin: 10px;
+  font-size: 10px;
+}
+.genres:hover {
+  background-color: red;
+}
+.inputNav {
+  width: 20rem;
+}
+.searchInPage {
+  justify-content: flex-end;
+}
+#body-container {
+  margin-top: 5rem;
+  text-align: center;
+}
+#genre-searchForm {
+  display: flex;
+}
+.inline {
+  display: flex;
+  align-items: flex-start;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.h5 {
+  font-size: 2rem;
+}
