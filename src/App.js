@@ -6,6 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import MovieListPage from "./pages/MovieListPage";
 
+import NotFoundPage from "./pages/NotFoundPage";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUser, faCat, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+library.add(faUser, faCat, faSignOutAlt);
+
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -24,15 +29,17 @@ function App() {
     <div className="App">
       <PublicNavbar />
       <Switch>
-        <Route
+        {/* <Route
           path="/movies/popular"
-          render={(props) => <MovieListPage {...props} type="popular" />}
+          render={(props) => <MovieListPage {...props} endPoint="popular" />}
         />
         <Route
           path="/movies/top_rated"
-          render={(props) => <MovieListPage {...props} type="top_rated" />}
-        />
-        <Route path="/" component={() => <MovieListPage />} />
+          render={(props) => <MovieListPage {...props} endPoint="top_rated" />}
+        />*/}
+
+        <Route path="/" component={MovieListPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );

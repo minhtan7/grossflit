@@ -18,8 +18,14 @@ const SearchForm = ({ handleSubmit }) => {
         onChange={(e) => setSearchTerm(e.target.value)}
         value={searchTerm}
       />
-      <button type="submit" className="btn btn-primary">
+      <button
+        type="submit"
+        className="search-btn"
+        style={{ content: "Search" }}
+      >
+        <div className="search-button-left"></div>
         Search
+        <div className="search-button-right"></div>
       </button>
     </form>
   );

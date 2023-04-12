@@ -1,39 +1,132 @@
-.list-card {
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+:root {
+  --primary-color: rgba(236, 85, 56);
+  --primary-trans: rgba(236, 85, 56, 0.8);
+  --background-trans: rgba(0, 0, 0, 0.8);
+  --font-family: "Dosis", sans-serif;
+}
+body {
+  font-family: var(--font-family) !important;
+  letter-spacing: 2px;
+}
+body h1 {
+  letter-spacing: 3px;
+}
+.ring-loader {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: center;
+  /* height: 50vh;
+  transition-duration: 5s; */
 }
-.movie-card {
-  margin: 10px;
+.genre-button {
+  background-color: rgb(236 85 56 / 72%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: sticky;
+  top: 80%;
+  color: white;
+  margin-left: auto;
+  margin-right: 5rem;
+  cursor: pointer;
+  box-shadow: inset 0 0 10px 3px rgb(225 204 200 / 62%);
+  transform: translateY(3rem);
+  z-index: 1000;
 }
+
+.genre-button:after {
+  content: "";
+  border: 1px solid rgb(236 85 56 / 40%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 2s infinite;
+  box-shadow: inset 0 0 10px 5px var(--primary-color);
+}
+@keyframes ring {
+  0% {
+    width: 3rem;
+    height: 3rem;
+    opacity: 1;
+  }
+  100% {
+    width: 4.5rem;
+    height: 4.5rem;
+    opacity: 0;
+  }
+}
+.genre-button svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* -----------Navbar-------------- */
+.nav-color {
+  background-color: var(--background-trans);
+  color: white;
+}
+a.nav-link {
+  color: white !important;
+}
+.search-btn {
+  background-color: var(--primary-color);
+  padding: 4px 25px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+}
+/* .search-button-left:after, */
+.search-button-right:after {
+  content: "";
+  color: black;
+  position: absolute;
+}
+/* -------------------------------- */
+
 #input-range {
   width: 30rem;
   margin: 2rem auto;
 }
 
 #genres {
-  margin: auto;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 270px 200px;
+  background-color: #00000052;
+  height: 100vh;
+  width: 100vw;
 }
 
 .genres {
-  border-radius: 20px;
-  background: transparent;
-  margin: 10px;
-  font-size: 10px;
+  border-radius: 40px;
+  color: white;
+  background: rgb(236 85 56 / 82%);
+  margin: 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border: 0;
+  box-shadow: 0 0 10px 5px #dd919152;
+  padding: 5px 20px;
+  line-height: 1;
 }
 .genres:hover {
-  background-color: red;
+  background-color: var(--primary-color);
+  color: white;
 }
 .inputNav {
-  width: 20rem;
+  width: 20rem !important;
 }
 .searchInPage {
   justify-content: flex-end;
-}
-#body-container {
-  margin-top: 5rem;
-  text-align: center;
 }
 #genre-searchForm {
   display: flex;
@@ -48,4 +141,282 @@
 }
 .h5 {
   font-size: 2rem;
+}
+
+/* -------------------------------------
+--------------MOVIE-LIST-PAGE--------------
+---------------------------------------- */
+#body-container {
+  text-align: center;
+  z-index: -10;
+  max-width: 1440px;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  animation: animate 25s ease infinite;
+  background-position: 50% 45%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: gray;
+  /* box-shadow: inset 0 0 0 2000px rgba(255, 0, 150, 0.3); */
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    background-image: url(https://image.tmdb.org/t/p/w1280/u5WUCO6irZoq27qbYYrtLUrCGDV.jpg);
+  }
+  25% {
+    background-image: url(https://image.tmdb.org/t/p/w1280/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg);
+  }
+  50% {
+    background-image: url(https://image.tmdb.org/t/p/w1280/z8TvnEVRenMSTemxYZwLGqFofgF.jpg);
+  }
+  75% {
+    background-image: url(https://image.tmdb.org/t/p/w1280/uQtqiAu2bBlokqjlURVLEha6zoi.jpg);
+  }
+}
+
+#starting-section {
+  height: 100vh;
+}
+.wrap-content {
+  background-color: var(--background-trans);
+  color: white;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+.pagination li {
+  padding: 4px 10px;
+  border-radius: 50%;
+}
+.pagination li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 400;
+}
+.pagination li.active {
+  padding: 4px 10px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+}
+.pagination {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: -8%;
+  background-color: var(--background-trans);
+  padding: 8px !important;
+}
+.list-card {
+  position: relative;
+}
+
+/* -------------------------------------
+--------------MOVIE-CARD--------------
+---------------------------------------- */
+
+.scroller {
+  flex-wrap: nowrap !important;
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+}
+.movie-card {
+  position: relative;
+  width: 18rem;
+  height: 27rem;
+  transition: transform 0.2s;
+}
+.movie-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.movie-card > img {
+  width: 18rem;
+  height: 27rem;
+
+  left: 0;
+  top: 0;
+}
+.overlay-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  background-color: var(--primary-trans);
+
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+}
+.movie-card:hover > .overlay-card {
+  opacity: 1;
+}
+.sub-overlay {
+  margin: auto 0;
+  color: white !important;
+}
+.btn-trailer {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px 20px;
+  font-weight: bold;
+  z-index: 10;
+}
+.sub-overlay div {
+  color: white;
+}
+.sub-overlay div h2 {
+  font-weight: bolder;
+}
+.movie-card-star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* -------------------------------
+------------MY MODAL----------
+------------------------------- */
+
+.my-modal {
+  max-width: 100%;
+  position: relative;
+}
+.modal-content {
+  background-color: #221d1db8 !important;
+  backdrop-filter: blur(10px) !important;
+}
+.my-modal .modal-theatre {
+  width: 100%;
+}
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  background-image: url("https://res.cloudinary.com/tanvo/image/upload/v1618493007/moviedb/1_esbzld.jpg");
+  background-size: cover;
+}
+
+.react-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+}
+
+.modal-left {
+  padding-left: 3rem !important;
+  margin: 30px;
+  padding: 20px;
+}
+.modal-right {
+  padding-right: 5rem !important;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.modal-genre {
+  display: inline-block;
+  padding: 3px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  margin: 0.8rem 0.7rem 0.8rem 0;
+  font-weight: bold;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+.modal-right h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+.modal-foo {
+  background-color: black;
+  color: white;
+  padding: 80px;
+}
+.modal-table {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin-bottom: 4rem;
+}
+.review-title {
+  margin-bottom: 1rem;
+}
+.modal-table img {
+  width: 10rem;
+  border-radius: 50%;
+}
+
+.modal-fullscreen {
+  margin: 0 !important;
+}
+.modal-xyz {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  outline: 0;
+}
+.modal-xyz .modal-content img {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.genres-list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+  background-color: rgb(0 0 0 / 26%);
+  padding: 0 !important;
+}
+.modal-theater {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.modal-close-btn {
+  position: absolute;
+  right: 10%;
+  top: 5rem;
+  color: var(--primary-color);
+  z-index: 15;
+}
+.modal-close-btn:hover {
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes sideAppeare {
+  0% {
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(0.005) scaleX(0);
+  }
 }
